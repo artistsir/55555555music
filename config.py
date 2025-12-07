@@ -1,7 +1,6 @@
 import re
 import os
 from os import getenv
-
 from dotenv import load_dotenv
 from pyrogram import filters
 
@@ -25,22 +24,18 @@ DURATION_LIMIT_MIN = int(getenv("DURATION_LIMIT", 900))
 LOGGER_ID = int(getenv("LOGGER_ID", None))
 
 # Get this value from @BRANDRD_ROBOT on Telegram by /id
-OWNER_ID = 7250012103
+OWNER_ID = int(getenv("OWNER_ID", 7250012103))
 
-## Fill these variables if you're deploying on heroku.
-# Your heroku app name
-HEROKU_APP_NAME = getenv("HEROKU_APP_NAME")
-# Get it from http://dashboard.heroku.com/account
-HEROKU_API_KEY = getenv("HEROKU_API_KEY")
+# Render specific variables
+RENDER = bool(getenv("RENDER", False))
+PORT = int(getenv("PORT", 8080))
 
 UPSTREAM_REPO = getenv(
     "UPSTREAM_REPO",
     "https://github.com/prashantsahlot/frozenvcmusic",
 )
 UPSTREAM_BRANCH = getenv("UPSTREAM_BRANCH", "main")
-GIT_TOKEN = getenv(
-    "GIT_TOKEN", None
-)  # Fill this variable if your upstream repository is private
+GIT_TOKEN = getenv("GIT_TOKEN", None)
 
 SUPPORT_CHANNEL = getenv("SUPPORT_CHANNEL", "https://t.me/vibeshiftbots")
 SUPPORT_CHAT = getenv("SUPPORT_CHAT", "https://t.me/Frozensupport1")
@@ -49,7 +44,7 @@ SUPPORT_CHAT = getenv("SUPPORT_CHAT", "https://t.me/Frozensupport1")
 AUTO_LEAVING_ASSISTANT = bool(getenv("AUTO_LEAVING_ASSISTANT", False))
 
 # Auto Gcast/Broadcast Handler (True = broadcast on , False = broadcast off During Hosting, Dont Do anything here.)
-AUTO_GCAST = os.getenv("AUTO_GCAST")
+AUTO_GCAST = os.getenv("AUTO_GCAST", False)
 
 # Auto Broadcast Message That You Want Use In Auto Broadcast In All Groups.
 AUTO_GCAST_MSG = getenv("AUTO_GCAST_MSG", "")
@@ -57,7 +52,6 @@ AUTO_GCAST_MSG = getenv("AUTO_GCAST_MSG", "")
 # Get this credentials from https://developer.spotify.com/dashboard
 SPOTIFY_CLIENT_ID = getenv("SPOTIFY_CLIENT_ID", "bcfe26b0ebc3428882a0b5fb3e872473")
 SPOTIFY_CLIENT_SECRET = getenv("SPOTIFY_CLIENT_SECRET", "907c6a054c214005aeae1fd752273cc4")
-
 
 # Maximum limit for fetching playlist's track from youtube, spotify, apple links.
 SERVER_PLAYLIST_LIMIT = int(getenv("SERVER_PLAYLIST_LIMIT", "50"))
@@ -69,16 +63,13 @@ SONG_DOWNLOAD_DURATION_LIMIT = int(getenv("SONG_DOWNLOAD_DURATION_LIMIT", "2000"
 # Telegram audio and video file size limit (in bytes)
 TG_AUDIO_FILESIZE_LIMIT = int(getenv("TG_AUDIO_FILESIZE_LIMIT", 104857600))
 TG_VIDEO_FILESIZE_LIMIT = int(getenv("TG_VIDEO_FILESIZE_LIMIT", 1073741824))
-# Checkout https://www.gbmb.org/mb-to-bytes for converting mb to bytes
-
 
 # Get your pyrogram v2 session from @BRANDEDSTRINGSESSION_BOT on Telegram
-STRING1 = getenv("STRING_SESSION",  None)
+STRING1 = getenv("STRING_SESSION", None)
 STRING2 = getenv("STRING_SESSION2", None)
 STRING3 = getenv("STRING_SESSION3", None)
 STRING4 = getenv("STRING_SESSION4", None)
 STRING5 = getenv("STRING_SESSION5", None)
-
 
 BANNED_USERS = filters.user()
 adminlist = {}
@@ -87,13 +78,8 @@ votemode = {}
 autoclean = []
 confirmer = {}
 
-
-START_IMG_URL = getenv(
-    "START_IMG_URL", "https://files.catbox.moe/4o3ied.jpg"
-)
-PING_IMG_URL = getenv(
-    "PING_IMG_URL", "https://files.catbox.moe/4o3ied.jpg"
-)
+START_IMG_URL = getenv("START_IMG_URL", "https://files.catbox.moe/4o3ied.jpg")
+PING_IMG_URL = getenv("PING_IMG_URL", "https://files.catbox.moe/4o3ied.jpg")
 PLAYLIST_IMG_URL = "https://graph.org/file/f0e790de4d84d5b4dab72-bc4dcadff42362281c.jpg"
 STATS_IMG_URL = "https://graph.org/file/f0e790de4d84d5b4dab72-bc4dcadff42362281c.jpg"
 TELEGRAM_AUDIO_URL = "https://graph.org/file/f0e790de4d84d5b4dab72-bc4dcadff42362281c.jpg"
@@ -112,7 +98,6 @@ def time_to_seconds(time):
 
 
 DURATION_LIMIT = int(time_to_seconds(f"{DURATION_LIMIT_MIN}:00"))
-
 
 if SUPPORT_CHANNEL:
     if not re.match("(?:http|https)://", SUPPORT_CHANNEL):
