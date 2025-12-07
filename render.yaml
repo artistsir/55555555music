@@ -1,0 +1,37 @@
+services:
+  - type: worker
+    name: frozen-music-bot
+    env: docker
+    dockerfilePath: Dockerfile
+    startCommand: bash start
+    envVars:
+      - key: API_ID
+        sync: false
+      - key: API_HASH
+        sync: false
+      - key: BOT_TOKEN
+        sync: false
+      - key: MONGO_DB_URI
+        sync: false
+      - key: STRING_SESSION
+        sync: false
+      - key: STRING_SESSION2
+        sync: false
+      - key: STRING_SESSION3
+        sync: false
+      - key: STRING_SESSION4
+        sync: false
+      - key: STRING_SESSION5
+        sync: false
+      - key: OWNER_ID
+        sync: false
+      - key: LOGGER_ID
+        sync: false
+      - key: MUSIC_BOT_NAME
+        sync: false
+      - key: DURATION_LIMIT
+        value: "900"
+      - key: AUTO_LEAVING_ASSISTANT
+        value: "False"
+      - key: AUTO_GCAST
+        value: "False"
